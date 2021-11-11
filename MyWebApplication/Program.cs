@@ -14,7 +14,7 @@ namespace MyWebApplication
         public static void Main(string[] args)
         {
             CreateHostBuilder(args)
-                .UseWindowsService()
+                //.UseWindowsService()
                 .Build().Run();
         }
 
