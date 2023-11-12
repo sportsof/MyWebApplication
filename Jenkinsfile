@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'ls -l'
                 sh 'docker compose build'
+				sh 'docker compose up -d'
             }
         }
     }
