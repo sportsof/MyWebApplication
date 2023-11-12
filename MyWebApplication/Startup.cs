@@ -1,3 +1,4 @@
+using Confluent.Kafka;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWebApplication.Data;
+using MyWebApplication.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +33,10 @@ namespace MyWebApplication
             {
                 options.UseMySql(mariadbCS, new MySqlServerVersion(new Version(10, 5, 15)));
             });
+
+            services.AddHostedService<KafkaConsumerService>();
+            services.AddSingleton<KafkaProducerHandler>();
+            services.AddSingleton<KafkaProducerService<Null, string>>();
 
             services.AddRazorPages();
         }
