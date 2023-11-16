@@ -35,8 +35,6 @@ namespace MyWebApplication.Services
         {
             _kafkaConsumer.Subscribe(_topic);
 
-            //var cr22 = _kafkaConsumer.Consume(cancellationToken);
-
             while (!cancellationToken.IsCancellationRequested)
             {
                 try
